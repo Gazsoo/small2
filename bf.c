@@ -8,7 +8,7 @@
 
 void redHeadError(int head_pos);
 
-
+//add comments
 int main(){
 
     int head_pos = 0;
