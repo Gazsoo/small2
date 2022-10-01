@@ -8,7 +8,7 @@
 
 void redHeadError(int head_pos);
 
-//add comments
+//add comments megvaltoztatom ezt a cucost
 int main(){
 
     int head_pos = 0;
