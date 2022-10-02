@@ -13,13 +13,16 @@ int main(){
 
     int head_pos = 0;
     int loop_counter = 0;
+    int loop_counter_start = 0;
 
     signed  char memory[32768] = {0};
     signed  char char_current_input;
-    signed  char programkod[] = "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.";
+    signed  char programkod[] = "++.[++.[-]-]";
         //while (scanf("%c", &current_input) == 1 && current_input != -1){
             //i < sizeof(programkod) / sizeof(char) - 1
+            
     for (int i = 0; programkod[i] !='\0' ; i++){
+        if (programkod[i+1] == '\0') printf("itt van valami vegpont");
         redHeadError(head_pos);
         //printf("%c\n", programkod[i]);
         //if (programkod[i] ='\0') programkod[i] = -1 ;
@@ -47,15 +50,17 @@ int main(){
             break;
         case ',':
             scanf("%d", &memory[head_pos]);
-            //memory[head_pos] = -1;//
+            //memory[head_pos] = -1;//for debug
             break;
         case '[':
-            
+
+            // Is condition true??
             if (memory[head_pos] > 0){
                 loop_counter++;
             } else {
-                while (programkod[i] != ']'){
+                while (programkod[i] != ']' && loop_counter_start > 0){
                     i++;
+                    loop_counter_start--;
                 }
             }
             break;
@@ -64,6 +69,7 @@ int main(){
                 while (loop_counter != 0){
                     
                     if (programkod[i] == '['){
+                        loop_counter_start++;
                         loop_counter--;
                         i--;
                     } else i--;
